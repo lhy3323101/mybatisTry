@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.ssm.dao.UserDao">
+    <resultMap id="getUser" type="com.ssm.model.User">
+        <id property="id" column="id"/>  <!--property对应属性名，column对应的是数据库中的数据 -->
+        <result property="name" column="name"/>
+        <result property="age" column="age"/>
+    </resultMap>
+
+    <select id="selectAllUser" resultMap="getUser">
+        SELECT * FROM user ;
+    </select>
+
+
+    <insert id="insert" parameterType="com.ssm.model.User">
+        INSERT INTO user(name,age) values ('${name}','${age}');
+    </insert>
+
+    <select id="findUserById" resultMap="getUser"  parameterType="com.ssm.model.User">
+        <![CDATA[
+            SELECT * FROM user WHERE id = '${id}';
+         ]]>
+    </select>
+    
+    <delete id="deleteUser" parameterType="com.ssm.model.User">
+        <![CDATA[
+            DELETE FROM user WHERE id = '${id}';
+        ]]>
+    </delete>
+</mapper>
