@@ -14,13 +14,26 @@
         ${formname}.age as age,
         ${formname}.name as name
     </sql>
+    
+    <sql id="getTable">
+        ${someTable}
+    </sql>
+    
+    <sql id="fromtable">
+        FROM
+        <include refid="${include_target}"/>
+    </sql>
 
     <select id="selectAllUser" resultType="com.ssm.model.User">
         SELECT
         <include refid="getUserData">
             <property name="formname" value="a"/>
         </include>
-        FROM user a;
+        <include refid="fromtable">
+            <property name="include_target" value="getTable"/>
+            <property name="someTable" value="user"/>
+        </include>
+        a
     </select>
 
 
