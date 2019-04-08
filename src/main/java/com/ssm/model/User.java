@@ -1,10 +1,14 @@
 package com.ssm.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @since 2018年09月28日
  */
-public class User {
+public class User implements Serializable {
+    private static final long serialVersionUID = -264886452673131665L;
+
     private int age;
 
     private int id;

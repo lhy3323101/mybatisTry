@@ -9,24 +9,34 @@
         <result property="age" column="age"/>
     </resultMap>
 
-    <select id="selectAllUser" resultMap="getUser">
-        SELECT * FROM user ;
+    <sql id="getUserData">
+        ${formname}.id as id,
+        ${formname}.age as age,
+        ${formname}.name as name
+    </sql>
+
+    <select id="selectAllUser" resultType="com.ssm.model.User">
+        SELECT
+        <include refid="getUserData">
+            <property name="formname" value="a"/>
+        </include>
+        FROM user a;
     </select>
 
 
     <insert id="insert" parameterType="com.ssm.model.User">
-        INSERT INTO user(name,age) values ('${name}','${age}');
+        INSERT INTO user(name,age) values (#{name},#{age});
     </insert>
 
     <select id="findUserById" resultMap="getUser"  parameterType="com.ssm.model.User">
         <![CDATA[
-            SELECT * FROM user WHERE id = '${id}';
+            SELECT * FROM user WHERE id = #{id};
          ]]>
     </select>
     
     <delete id="deleteUser" parameterType="com.ssm.model.User">
         <![CDATA[
-            DELETE FROM user WHERE id = '${id}';
+            DELETE FROM user WHERE id = #{id};
         ]]>
     </delete>
 </mapper>

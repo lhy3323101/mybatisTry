@@ -18,7 +18,7 @@
 </head>
 <body>
     <h2 align="center">新增用户</h2>
-    <form name="form1" id="form1" action="/user/insertcheck" method="post">
+    <form name="form1" id="form1" action="<%= basePath%>/user/insertCheck" method="post">
         <table align="center" border="1">
             <tr>
                 <th>姓名:</th>

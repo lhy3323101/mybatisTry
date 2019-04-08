@@ -32,7 +32,7 @@ public class UserController {
         return mav;
     }
 
-    @RequestMapping(value = "/insertcheck")
+    @RequestMapping(value = "/insertCheck")
     public ModelAndView insert(User user, HttpServletRequest req, HttpServletResponse resp){
         ModelAndView mav = new ModelAndView();
         try {
