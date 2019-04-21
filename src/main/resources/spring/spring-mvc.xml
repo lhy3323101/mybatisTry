@@ -11,7 +11,7 @@
                            http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
 
-    <context:component-scan base-package="com.ssm.controller"/>
+    <context:component-scan base-package="com.ssm.*,com.test.*"/>
 
     <!--避免IE执行AJAX时，返回JSON出现下载文件 -->
     <bean id="mappingJacksonHttpMessageConverter"
@@ -38,14 +38,6 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <!-- 文件上传配置 -->
-    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <!--默认编码-->
-        <property name="defaultEncoding" value="UFT-8"/>
-        <!--上传大小限制为31M-->
-        <property name="maxUploadSize" value="32505856"/>
-        <!--内存最大值-->
-        <property name="maxInMemorySize" value="4096"/>
-    </bean>
+
 
 </beans>

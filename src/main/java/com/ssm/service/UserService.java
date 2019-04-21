@@ -1,5 +1,6 @@
 package com.ssm.service;
 
+import com.github.pagehelper.PageInfo;
 import com.ssm.model.User;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
  * @since 2018年09月28日
  */
 public interface UserService {
-    public List<User> getUser();
+    public PageInfo<User> getUser(int pageNo);
 
     public int insertUser(User user);
 

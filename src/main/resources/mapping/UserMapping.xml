@@ -14,11 +14,11 @@
         ${formname}.age as age,
         ${formname}.name as name
     </sql>
-    
+
     <sql id="getTable">
         ${someTable}
     </sql>
-    
+
     <sql id="fromtable">
         FROM
         <include refid="${include_target}"/>
@@ -46,10 +46,12 @@
             SELECT * FROM user WHERE id = #{id};
          ]]>
     </select>
-    
+
     <delete id="deleteUser" parameterType="com.ssm.model.User">
         <![CDATA[
             DELETE FROM user WHERE id = #{id};
         ]]>
     </delete>
+
+
 </mapper>

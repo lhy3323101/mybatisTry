@@ -62,7 +62,7 @@
     <servlet-name>SpringMVC</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
-
+ 
   <!-- session配置 -->
   <session-config>
     <session-timeout>15</session-timeout>

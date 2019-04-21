@@ -1,5 +1,7 @@
 package com.ssm.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.ssm.dao.UserDao;
 import com.ssm.model.User;
 import org.springframework.stereotype.Service;
@@ -24,8 +26,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<User> getUser() {
-        return userDao.selectAllUser();
+    public PageInfo<User> getUser(int pageNo) {
+        PageHelper.startPage(pageNo,3);
+        List<User> list = userDao.selectAllUser();
+        PageInfo<User> page = new PageInfo<>(list);
+        return page;
     }
 
     @Override

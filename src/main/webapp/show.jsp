@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.github.pagehelper.PageInfo" %>
+<%@ page import="com.ssm.model.User" %><%--
   Created by IntelliJ IDEA.
   User: Angel
   Date: 2018/9/28
@@ -32,7 +33,7 @@
             </tr>
             <c:choose>
                 <c:when test="${not empty userList}">
-                    <c:forEach items="${userList}" var="user" varStatus="vs">
+                    <c:forEach items="${userList.list}" var="user" varStatus="vs">
                         <tr>
                             <td>${user.id}</td>
                             <td>${user.name}</td>
@@ -51,6 +52,11 @@
     </form>
     <div align="center">
         <a href="<%= basePath%>index.jsp">返回首页</a>
+    </div>
+    <div align="center">
+        <a href="<%= basePath%>user/list?pageNo=${userList.prePage}">上一页&nbsp</a>
+        <label>共${userList.pages}页</label>&nbsp&nbsp<label>第${userList.pageNum}页</label>
+        <a href="<%= basePath%>user/list?pageNo=${userList.nextPage}&isLastPage=${userList.isLastPage}&totalPage=${userList.pages}">下一页</a>
     </div>
 </body>
 </html>
